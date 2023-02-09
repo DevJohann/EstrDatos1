@@ -6,17 +6,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class MainView extends JFrame{
-	
-	//Text
+public class MainView extends JFrame {
+
+	// Text
 	private JLabel mainTitle;
-	
-	//Panels
+
+	// Panels
 	private TablePanel TP;
-	
-	//Buttons
+
+	// Buttons
 	private JButton loadBtn;
-	
+	private JButton mathHighscoreBtn;
+
 	public MainView() {
 		setSize(600, 600);
 		setLocationRelativeTo(null);
@@ -24,26 +25,32 @@ public class MainView extends JFrame{
 		setVisible(true);
 		initComponents();
 	}
-	
+
 	public void initComponents() {
-		
-		//Text
+
+		// Text
 		mainTitle = new JLabel("Lista");
 		mainTitle.setBounds(280, 20, 100, 20);
 		add(mainTitle);
-		
-		//Panels
+
+		// Panels
 		TP = new TablePanel();
 		TP.setBounds(40, 100, 500, 200);
 		TP.setBackground(Color.green);
 		add(TP);
-		
-		//Buttons
+
+		// Buttons
 		loadBtn = new JButton("Cargar notas");
 		loadBtn.setActionCommand("loadBtn");
 		loadBtn.setBounds(40, 500, 120, 26);
 		loadBtn.setFocusable(false);
 		add(loadBtn);
+
+		mathHighscoreBtn = new JButton("Mejor nota matemáticas");
+		mathHighscoreBtn.setActionCommand("mathHighscoreBtn");
+		mathHighscoreBtn.setBounds(180, 500, 180, 26);
+		mathHighscoreBtn.setFocusable(false);
+		add(mathHighscoreBtn);
 	}
 
 	public JLabel getMainTitle() {
@@ -69,6 +76,13 @@ public class MainView extends JFrame{
 	public void setLoadBtn(JButton loadBtn) {
 		this.loadBtn = loadBtn;
 	}
-	
-	
+
+	public JButton getMathHighscoreBtn() {
+		return mathHighscoreBtn;
+	}
+
+	public void setMathHighscoreBtn(JButton mathHighscoreBtn) {
+		this.mathHighscoreBtn = mathHighscoreBtn;
+	}
+
 }

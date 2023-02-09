@@ -10,6 +10,7 @@ public class TablePanel extends JPanel {
 	private JTable mainTable;
 	private TableModel model;
 	private JScrollPane scroll;
+	public static boolean isTableLoaded = false;
 
 	public TablePanel() {
 
@@ -43,6 +44,7 @@ public class TablePanel extends JPanel {
 		scroll = new JScrollPane(mainTable);
 		scroll.setBounds(0, 0, 500, 200);
 		add(scroll);
+		isTableLoaded = true;
 		repaint();
 	}
 

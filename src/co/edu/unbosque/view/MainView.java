@@ -1,7 +1,5 @@
 package co.edu.unbosque.view;
 
-import java.awt.Color;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +15,7 @@ public class MainView extends JFrame {
 	// Buttons
 	private JButton loadBtn;
 	private JButton mathHighscoreBtn;
+	private JButton bestHighscoreBtn;
 
 	public MainView() {
 		setSize(600, 600);
@@ -36,7 +35,7 @@ public class MainView extends JFrame {
 		// Panels
 		TP = new TablePanel();
 		TP.setBounds(40, 100, 500, 200);
-		TP.setBackground(Color.green);
+		// TP.setBackground(Color.green);
 		add(TP);
 
 		// Buttons
@@ -51,6 +50,14 @@ public class MainView extends JFrame {
 		mathHighscoreBtn.setBounds(180, 500, 180, 26);
 		mathHighscoreBtn.setFocusable(false);
 		add(mathHighscoreBtn);
+
+		bestHighscoreBtn = new JButton("Mejor promedio");
+		bestHighscoreBtn.setActionCommand("bestHighscoreBtn");
+		bestHighscoreBtn.setBounds(380, 500, 150, 26);
+		bestHighscoreBtn.setFocusable(false);
+		add(bestHighscoreBtn);
+
+		// TODO: Materia en la que perdieron más estudiantes
 	}
 
 	public JLabel getMainTitle() {
@@ -83,6 +90,14 @@ public class MainView extends JFrame {
 
 	public void setMathHighscoreBtn(JButton mathHighscoreBtn) {
 		this.mathHighscoreBtn = mathHighscoreBtn;
+	}
+
+	public JButton getBestHighscoreBtn() {
+		return bestHighscoreBtn;
+	}
+
+	public void setBestHighscoreBtn(JButton bestHighscoreBtn) {
+		this.bestHighscoreBtn = bestHighscoreBtn;
 	}
 
 }

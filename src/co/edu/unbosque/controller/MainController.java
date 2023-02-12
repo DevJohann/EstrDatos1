@@ -34,6 +34,8 @@ public class MainController implements ActionListener {
 		MV.getLoadBtn().addActionListener(this);
 		MV.getMathHighscoreBtn().addActionListener(this);
 		MV.getBestHighscoreBtn().addActionListener(this);
+		MV.getLowestSubject().addActionListener(this);
+		MV.getHighestSubject().addActionListener(this);
 	}
 
 	@Override
@@ -42,11 +44,16 @@ public class MainController implements ActionListener {
 		case "loadBtn":
 			// System.out.println("Cargar datos presionado"); //Debug
 			// Método que cargue los datos (modelo)
-			DTO.setTableData(MM.generateRandomArray());
-			DTO.setTableHeaders(MM.getColHeaders());
-			MV.getTP().setModel(new DefaultTableModel(DTO.getTableData(), DTO.getTableHeaders()));
-			// MV.getTP().setMainTable(new JTable());
-			MV.getTP().loadTable();
+			if (TablePanel.isTableLoaded) {
+				JOptionPane.showMessageDialog(null, "La tabla ya fue cargada");
+				break;
+			} else {
+				DTO.setTableData(MM.generateRandomArray());
+				DTO.setTableHeaders(MM.getColHeaders());
+				MV.getTP().setModel(new DefaultTableModel(DTO.getTableData(), DTO.getTableHeaders()));
+				// MV.getTP().setMainTable(new JTable());
+				MV.getTP().loadTable();
+			}
 			break;
 
 		case "mathHighscoreBtn":
@@ -60,7 +67,7 @@ public class MainController implements ActionListener {
 			break;
 
 		case "bestHighscoreBtn":
-			// System.out.println("Boton preisonado"); //Debug
+			// System.out.println("Botón preisonado"); //Debug
 			response = DTO.getBestHighscore(TablePanel.isTableLoaded);
 			if (response.equals("Tabla no cargada"))
 				JOptionPane.showMessageDialog(null, "Debe cargar primero la tabla de notas");
@@ -68,6 +75,26 @@ public class MainController implements ActionListener {
 				JOptionPane.showMessageDialog(null, response);
 
 			break;
+
+		case "lowestSubject":
+			// System.out.println("Botón presionado"); //Debug
+			// Check table
+			response = DTO.getLowestSubject(TablePanel.isTableLoaded);
+			if (response.equals("Tabla no cargada"))
+				JOptionPane.showMessageDialog(null, "Debe cargar primero la tabla de notas");
+			else
+				JOptionPane.showMessageDialog(null, response);
+			break;
+
+		case "highestSubject":
+			// System.out.println("Botón presonado"); //Debug
+			response = DTO.getHighestSubject(TablePanel.isTableLoaded);
+			if (response.equals("Tabla no cargada"))
+				JOptionPane.showMessageDialog(null, "Debe cargar primero la tabla de notas");
+			else
+				JOptionPane.showMessageDialog(null, response);
+			break;
+
 		default:
 			break;
 		}

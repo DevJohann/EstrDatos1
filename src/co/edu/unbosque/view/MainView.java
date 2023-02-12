@@ -16,12 +16,15 @@ public class MainView extends JFrame {
 	private JButton loadBtn;
 	private JButton mathHighscoreBtn;
 	private JButton bestHighscoreBtn;
+	private JButton lowestSubject;
+	private JButton highestSubject;
 
 	public MainView() {
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		setLayout(null);
 		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		initComponents();
 	}
 
@@ -57,7 +60,17 @@ public class MainView extends JFrame {
 		bestHighscoreBtn.setFocusable(false);
 		add(bestHighscoreBtn);
 
-		// TODO: Materia en la que perdieron más estudiantes
+		lowestSubject = new JButton("Materia más perdida");
+		lowestSubject.setActionCommand("lowestSubject");
+		lowestSubject.setBounds(40, 450, 160, 26);
+		lowestSubject.setFocusable(false);
+		add(lowestSubject);
+
+		highestSubject = new JButton("Mejor promedio materia");
+		highestSubject.setActionCommand("highestSubject");
+		highestSubject.setBounds(250, 450, 180, 26);
+		highestSubject.setFocusable(false);
+		add(highestSubject);
 	}
 
 	public JLabel getMainTitle() {
@@ -98,6 +111,22 @@ public class MainView extends JFrame {
 
 	public void setBestHighscoreBtn(JButton bestHighscoreBtn) {
 		this.bestHighscoreBtn = bestHighscoreBtn;
+	}
+
+	public JButton getLowestSubject() {
+		return lowestSubject;
+	}
+
+	public void setLowestSubject(JButton lowestSubject) {
+		this.lowestSubject = lowestSubject;
+	}
+
+	public JButton getHighestSubject() {
+		return highestSubject;
+	}
+
+	public void setHighestSubject(JButton highestSubject) {
+		this.highestSubject = highestSubject;
 	}
 
 }
